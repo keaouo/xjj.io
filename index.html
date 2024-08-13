@@ -17,7 +17,7 @@
       overflow: hidden;
     }
 
-  .ad-text {
+ .ad-text {
       white-space: nowrap;
       animation: scrollText 10s linear infinite;
       font-size: 80px; 
@@ -29,7 +29,7 @@
       100% { transform: translateX(-100%); }
     }
 
-    #m3u8Player {
+    video {
       width: 100%;
       height: auto;
     }
@@ -38,7 +38,10 @@
 
 <body>
 
-  <div id="m3u8Player"></div>
+  <video controls autoplay>
+    <source src="" type="application/x-mpegURL">
+    Your browser does not support the video tag.
+  </video>
 
   <div class="ad-container">
     <div class="ad-text">如果您未满 18 岁请立即关闭!!!</div>
@@ -61,20 +64,11 @@
 
     // 读取 xjj.txt 文件并随机选择视频源
     fetch('xjj.txt')
- .then(response => response.text())
- .then(text => {
+   .then(response => response.text())
+   .then(text => {
         const lines = text.split('\n');
         const randomLine = lines[Math.floor(Math.random() * lines.length)];
-
-        // 创建 m3u8 播放器
-        const player = videojs('m3u8Player', {
-          sources: [
-            {
-              src: randomLine,
-              type: 'application/x-mpegURL'
-            }
-          ]
-        });
+        document.querySelector('video source').src = randomLine;
       });
   </script>
 
