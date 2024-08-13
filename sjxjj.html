@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<video width="965"
+			   height="1800"
+			   controls
+			   autoplay>
+			<source src="http://api.yujn.cn/api/zzxjj.php"
+					type="application/x-mpegURL"> Your browser does not support
+			the video tag. </video>
+		<script>
+			let startY, endY;     document.addEventListener('touchstart', (e) => {       startY = e.touches[0].clientY;     });     document.addEventListener('touchend', (e) => {       endY = e.changedTouches[0].clientY;       if (startY > endY && Math.abs(startY - endY) > 260) {   location.reload();       }     });
+		</script>
+	</body>
+</html>
