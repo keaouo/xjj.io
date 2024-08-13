@@ -39,13 +39,13 @@
 
 <body>
 
-  <video autoplay muted>
+  <video autoplay muted playsinline>
     <source src="" type="application/x-mpegURL">
     Your browser does not support the video tag.
   </video>
 
-  <div class="ae-container">
-    <div class="ae-text">如果您未满 18 岁请立即关闭!!!</div>
+  <div class="ad-container">
+    <div class="ad-text">如果您未满 18 岁请立即关闭!!!</div>
   </div>
 
   <script>
@@ -65,8 +65,8 @@
 
     // 读取 xjj.txt 文件并随机选择视频源
     fetch('xjj.txt')
-  .then(response => response.text())
-  .then(text => {
+ .then(response => response.text())
+ .then(text => {
         const lines = text.split('\n');
         const randomLine = lines[Math.floor(Math.random() * lines.length)];
         document.querySelector('video source').src = randomLine;
