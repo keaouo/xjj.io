@@ -1,3 +1,6 @@
+以下是将视频播放器改为支持 `m3u8` 格式的示例代码：
+
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +8,7 @@
 </head>
 <head>
   <style>
-.ad-container {
+ .ad-container {
       width: 100%;
       height: 100px;
       background-color: #f0f0f0;
@@ -13,7 +16,7 @@
       overflow: hidden;
     }
 
-.ad-text {
+ .ad-text {
       white-space: nowrap;
       animation: scrollText 10s linear infinite;
       font-size: 80px; 
@@ -29,10 +32,7 @@
 
 <body>
 
-  <video width="965" height="1600" controls autoplay>
-    <source src="" type="application/x-mpegURL">
-    Your browser does not support the video tag.
-  </video>
+  <div id="m3u8Player"></div>
 
   <div class="ad-container">
     <div class="ad-text">如果您未满 18 岁请立即关闭!!!</div>
@@ -55,14 +55,24 @@
 
     // 读取 xjj.txt 文件并随机选择视频源
     fetch('xjj.txt')
-    .then(response => response.text())
-    .then(text => {
+  .then(response => response.text())
+  .then(text => {
         const lines = text.split('\n');
         const randomLine = lines[Math.floor(Math.random() * lines.length)];
-        document.querySelector('video source').src = randomLine;
+
+        // 创建 m3u8 播放器
+        const player = videojs('m3u8Player', {
+          sources: [
+            {
+              src: randomLine,
+              type: 'application/x-mpegURL'
+            }
+          ]
+        });
       });
   </script>
 
 </body>
 
 </html>
+```
