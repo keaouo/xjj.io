@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +5,11 @@
 </head>
 <head>
   <style>
- .ad-container {
+    * {
+      box-sizing: border-box;
+    }
+
+  .ad-container {
       width: 100%;
       height: 100px;
       background-color: #f0f0f0;
@@ -14,7 +17,7 @@
       overflow: hidden;
     }
 
- .ad-text {
+  .ad-text {
       white-space: nowrap;
       animation: scrollText 10s linear infinite;
       font-size: 80px; 
@@ -24,6 +27,11 @@
     @keyframes scrollText {
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
+    }
+
+    #m3u8Player {
+      width: 100%;
+      height: auto;
     }
   </style>
 </head>
@@ -53,8 +61,8 @@
 
     // 读取 xjj.txt 文件并随机选择视频源
     fetch('xjj.txt')
-  .then(response => response.text())
-  .then(text => {
+ .then(response => response.text())
+ .then(text => {
         const lines = text.split('\n');
         const randomLine = lines[Math.floor(Math.random() * lines.length)];
 
@@ -73,4 +81,3 @@
 </body>
 
 </html>
-```
